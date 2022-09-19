@@ -1,18 +1,19 @@
-from constants import WHITE, BALL_SPEED
+from constants import RED, BALL_SPEED
+import random
 import pygame
 
 
 
 class Ball:
-	COLOR = WHITE
+	COLOR = RED
 	MAX_VEL = BALL_SPEED
 	
 	def __init__(self, x, y, radius):
 		self.x = self.original_x = x
 		self.y = self.original_y = y
 		self.radius = radius
-		self.x_vel = self.MAX_VEL
-		self.y_vel = 0
+		self.x_vel = random.choice((self.MAX_VEL, -self.MAX_VEL))
+		self.y_vel = random.randint(-2, 2)
 	
 	@property
 	def left(self):
@@ -46,4 +47,4 @@ class Ball:
 		self.x = self.original_x
 		self.y = self.original_y
 		self.x_vel *= -1
-		self.y_vel = 0
+		self.y_vel = random.randint(-2, 2)
